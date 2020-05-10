@@ -134,7 +134,9 @@
     const [play, pause, screenshot] = buttons;
 
     const constraints = {
+        autio: false,
         video: {
+            facingMode: { exact: "environment" },
             width: {
                 min: 1280,
                 ideal: 1920,
@@ -169,9 +171,9 @@
         if ('mediaDevices' in navigator && navigator.mediaDevices.getUserMedia) {
             const updatedConstraints = {
                 ...constraints,
-                deviceId: {
-                    exact: cameraOptions.value
-                }
+                // deviceId: {
+                //     exact: cameraOptions.value
+                // }
             };
             startStream(updatedConstraints);
         }
@@ -205,7 +207,6 @@
         play.classList.add('d-none');
         pause.classList.remove('d-none');
         screenshot.classList.remove('d-none');
-
     };
 
 
